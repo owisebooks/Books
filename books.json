@@ -6,13 +6,5 @@
     "description": "ရှိုက်ခ်အဗွလ်ဟစန်၏အတွေးအခေါ်များကိုလူငယ်ခေတ်ပညာတတ်များထိတွေမှုရှိစေရန်ရည်ရည်ပါသည်။",
     "cover": "Books / nadwi-cover.jpg",
     "file": "Books / U Rar Zat-လက္ထက္ေတာ္တြင္းအျဖစ္အပ်က္စာတမ္း.pdf"
-  },
-  {
-    "id": 2,
-    "title": "အိုဝိုက်စ်(မောင်ငံ)",
-    "category": "Robotics",
-    "description": "Learn how to model open and closed-loop motor systems visually before deployment.",
-    "cover": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80",
-    "file": "books/simulink-motor-control.pdf"
   }
 ]
