@@ -1,12 +1,18 @@
 [
   {
+    "id": 1,
     "title": "ရှိုက်ခ်အဗွလ်ဟစန်အလီနဒ်ဝီ",
     "category": "အခမဲ့",
-    "file": "arduino-pid-guide.pdf"
+    "description": "ရှိုက်ခ်အဗွလ်ဟစန်၏အတွေးအခေါ်များကိုလူငယ်ခေတ်ပညာတတ်များထိတွေမှုရှိစေရန်ရည်ရည်ပါသည်။",
+    "cover": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+    "file": "books/pid-control-arduino.pdf"
   },
   {
+    "id": 2,
     "title": "အိုဝိုက်စ်(မောင်ငံ)",
-    "category": "Technology",
-    "file": "intro-robotics.pdf"
+    "category": "Robotics",
+    "description": "Learn how to model open and closed-loop motor systems visually before deployment.",
+    "cover": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80",
+    "file": "books/simulink-motor-control.pdf"
   }
 ]
