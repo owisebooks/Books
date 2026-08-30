@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Digital Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.5; }
+
+    /* Header & Hero */
+    header { background: #1e293b; color: white; padding: 60px 20px; text-align: center; }
+    header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    header p { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    /* Search & Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    .search-bar { width: 100%; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border); font-size: 1rem; margin-bottom: 30px; outline: none; transition: border-color 0.2s; }
+    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+
+    /* Grid & Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .card-img { width: 100%; height: 200px; object-fit: cover; background: #e2e8f0; }
+    .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .tag { align-self: flex-start; background: #eff6ff; color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 12px; }
+    .card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
+    .card-desc { color: var(--text-muted); font-size: 0.9rem; flex-grow: 1; margin-bottom: 20px; }
+    
+    /* Buttons */
+    .btn-download { display: block; text-align: center; background: var(--primary); color: white; padding: 12px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .btn-download:hover { background: var(--primary-hover); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Open Digital Library</h1>
+    <p>Explore, read, and download free educational books and technical guides.</p>
+  </header>
+
+  <div class="container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search by book title, topic, or keyword..." onkeyup="filterBooks()">
+    <div class="grid" id="bookGrid"></div>
+  </div>
+
+  <script>
+    let booksData = [];
+
+    // Load data from books.json
+    fetch('books.json')
+      .then(res => res.json())
+      .then(data => {
+        booksData = data;
+        renderBooks(booksData);
+      })
+      .catch(err => console.error("Error loading book list:", err));
+
+    function renderBooks(books) {
+      const grid = document.getElementById('bookGrid');
+      grid.innerHTML = '';
+      
+      if(books.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No matching books found.</p>';
+        return;
+      }
+
+      books.forEach(book => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${book.cover}" alt="${book.title}" class="card-img">
+          <div class="card-body">
+            <span class="tag">${book.category}</span>
+            <h2 class="card-title">${book.title}</h2>
+            <p class="card-desc">${book.description}</p>
+            <a href="${book.file}" download class="btn-download">Download Free PDF</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterBooks() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = booksData.filter(b => 
+        b.title.toLowerCase().includes(query) || 
+        b.category.toLowerCase().includes(query) ||
+        b.description.toLowerCase().includes(query)
+      );
+      renderBooks(filtered);
+    }
+  </script>
+
+</body>
+</html>
