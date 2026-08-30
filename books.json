@@ -7,4 +7,14 @@
     "cover": "the-great-gatsby.jpg",
     "file": "urazat-book.pdf"
   }
+],
+[
+  {
+    "id": 2,
+    "title": "နဒ်ဝီ",
+    "category": "free",
+    "description": "ရှိုက်ခ်အဗွလ်ဟစန်၏အတွေးအခေါ်များကိုလူငယ်ခေတ်ပညာတတ်များထိတွေမှုရှိစေရန်ရည်ရည်ပါသည်။",
+    "cover": "nadwi-cover.jpg",
+    "file": "urazat-book.pdf"
+  }
 ]
