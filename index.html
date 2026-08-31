@@ -19,10 +19,20 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.5; }
 
-    /* Header */
-    header { background: #1e293b; color: white; padding: 50px 20px; text-align: center; }
-    header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
-    header p { color: #94a3b8; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    /* Header with Blurred Custom Background Image */
+    header { 
+      position: relative;
+      background-color: #1e293b;
+      background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('nadwi-cover.jpg'); 
+      background-size: cover;
+      background-position: center;
+      color: white; 
+      padding: 60px 20px; 
+      text-align: center; 
+      overflow: hidden;
+    }
+    header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
+    header p { color: #e2e8f0; font-size: 1rem; max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
 
     /* Container */
     .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
